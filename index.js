@@ -4,14 +4,15 @@ const fs = require('fs');
 
 try {
   // `who-to-greet` input defined in action metadata file
-  const nameToGreet = core.getInput('who-to-greet');
-  console.log(`Hello ${nameToGreet}!`);
+  const baseDirectory = core.getInput('base-directory');
+  console.log(`Hello ${baseDirectory}!`);
   const time = (new Date()).toTimeString();
   core.setOutput("time", time);
   // Get the JSON webhook payload for the event that triggered the workflow
   /*const payload = JSON.stringify(github.context.payload, undefined, 2)
   console.log(`The event payload: ${payload}`);*/
-  fs.readFile(nameToGreet + '/source.json', function(err, data) {
+  fs.readFile(baseDirectory + '/source.json', function(err, data) {
+    let sourceJson = JSON.parse(data);
     console.log('data -> '+data);
   })
 } catch (error) {
