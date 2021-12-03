@@ -8444,6 +8444,7 @@ var __webpack_exports__ = {};
 (() => {
 const core = __nccwpck_require__(8561);
 const github = __nccwpck_require__(1468);
+const fs = __nccwpck_require__(7147);
 
 try {
   // `who-to-greet` input defined in action metadata file
@@ -8452,8 +8453,9 @@ try {
   const time = (new Date()).toTimeString();
   core.setOutput("time", time);
   // Get the JSON webhook payload for the event that triggered the workflow
-  const payload = JSON.stringify(github.context.payload, undefined, 2)
-  console.log(`The event payload: ${payload}`);
+  /*const payload = JSON.stringify(github.context.payload, undefined, 2)
+  console.log(`The event payload: ${payload}`);*/
+  console.log(github.context.repo);
 } catch (error) {
   core.setFailed(error.message);
 }
