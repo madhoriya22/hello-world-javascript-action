@@ -8457,6 +8457,7 @@ try {
   console.log(`The event payload: ${payload}`);*/
   fs.readFile(baseDirectory + '/source.json', function(err, data) {
     let sourceJson = JSON.parse(data);
+    console.log('sourceJson -> '+sourceJson);
     console.log('data -> '+data);
   })
 } catch (error) {
