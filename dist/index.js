@@ -8456,7 +8456,7 @@ try {
   /*const payload = JSON.stringify(github.context.payload, undefined, 2)
   console.log(`The event payload: ${payload}`);*/
   fs.readFile(nameToGreet + '/source.json', function(err, data) {
-    console.log(data);
+    console.log('data -> '+data);
   })
 } catch (error) {
   core.setFailed(error.message);
