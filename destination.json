@@ -1,5 +1,5 @@
 {
     "name": "Sample destination Json",
-    "localValue": "Copy this text to Other Json",
+    "localValue": "This is local value",
     "sourceValue": ""
 }
