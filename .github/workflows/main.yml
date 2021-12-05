@@ -17,7 +17,7 @@ jobs:
           base-directory: ${{github.workspace}}
       # Use the output from the `hello` step
       - name: Copy Json Content Result
-        run: echo "The time was ${{ steps.jsonCopy.outputs.result }}"
+        run: echo "${{ steps.jsonCopy.outputs.result }}"
 
       - name: Commit changes
         uses: EndBug/add-and-commit@v7

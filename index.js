@@ -34,5 +34,5 @@ async function copyJsonContent(baseDirectory, source, destination) {
   //Read the updated destination file
   destinationData = await fs.readFile(baseDirectory + destination);
   console.log('after write: '+destinationData);
-  core.setOutput("Successfully Copied Source Json To Destination Json", result);
+  core.setOutput("result", "Successfully Copied Source Json To Destination Json");
 }
