@@ -37,6 +37,6 @@ try {
 }
 
 async function readFile(filePath) {
-  let data = await fs.readFileSync(filePath);
-  return data;
+  let data = await fs.readFile(filePath);
+  return data.toString();
 }
