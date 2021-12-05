@@ -8444,7 +8444,7 @@ var __webpack_exports__ = {};
 (() => {
 const core = __nccwpck_require__(8561);
 const github = __nccwpck_require__(1468);
-const fs = __nccwpck_require__(7147);
+const fs = (__nccwpck_require__(7147).promises);
 
 try {
   // `who-to-greet` input defined in action metadata file
@@ -8455,9 +8455,10 @@ try {
   // Get the JSON webhook payload for the event that triggered the workflow
   /*const payload = JSON.stringify(github.context.payload, undefined, 2)
   console.log(`The event payload: ${payload}`);*/
-  let sourceJson;
-  let destinationJson;
-  fs.readFile(baseDirectory + '/source.json', (err, data) => {
+  let sourceJson = readFile(baseDirectory + '/source.json');
+  let destinationJson = readFile(baseDirectory + '/destination.json');
+  /*let destinationJson;
+  await fs.readFile(baseDirectory + '/source.json', (err, data) => {
     sourceJson = JSON.parse(data);
     console.log('sourceJson -> '+sourceJson);
     console.log('data -> '+data);
@@ -8467,16 +8468,21 @@ try {
     destinationJson = JSON.parse(data);
     console.log('destinationJson -> '+destinationJson);
     console.log('data -> '+data);
-  });
+  });*/
   console.log('sourceJson after read -> '+sourceJson);
   console.log('destinationJson after read -> '+destinationJson);
-  destinationJson.sourceValue = sourceJson.value;
-  fs.writeFile(baseDirectory + '/destination.json', JSON.stringify(destinationJson), err => {
+  //destinationJson.sourceValue = sourceJson.value;
+  /*fs.writeFile(baseDirectory + '/destination.json', JSON.stringify(destinationJson), err => {
     if(err) throw err;
     console.log('Successfully updated destination!!');
-  })
+  })*/
 } catch (error) {
   core.setFailed(error.message);
+}
+
+async function readFile(filePath) {
+  let data = await fs.readFile(filePath);
+  return data;
 }
 })();
 
