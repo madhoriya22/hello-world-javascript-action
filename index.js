@@ -24,6 +24,8 @@ try {
     console.log('destinationJson -> '+destinationJson);
     console.log('data -> '+data);
   });
+  console.log('sourceJson after read -> '+sourceJson);
+  console.log('destinationJson after read -> '+destinationJson);
   destinationJson.sourceValue = sourceJson.value;
   fs.writeFile(baseDirectory + '/destination.json', JSON.stringify(destinationJson), err => {
     if(err) throw err;
