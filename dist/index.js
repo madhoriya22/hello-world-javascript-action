@@ -8463,9 +8463,9 @@ try {
     console.log('data -> '+data);
   });*/
 
-  fs.readFile(baseDirectory + '/destination.json', (err, data) => {
-    console.log('after write -> '+data);
-  });
+  fs.readFile(baseDirectory + '/destination.json').then((data, err) => {
+    console.log('after write: '+data);
+  })
   //destinationJson.sourceValue = sourceJson.value;
   /*fs.writeFile(baseDirectory + '/destination.json', JSON.stringify(destinationJson), err => {
     if(err) throw err;
@@ -8481,7 +8481,7 @@ async function copyJsonContent(baseDirectory, source, destination) {
   let destinationData = await fs.readFile(baseDirectory + destination);
   let destinationJson = JSON.parse(destinationData);
   destinationJson.sourceValue = sourceJson.value;
-  console.log('destionation after copy -> '+JSON.stringify(destinationJson));
+  console.log('destination after copy -> '+JSON.stringify(destinationJson));
 
   //write to destination file
   await fs.writeFile(baseDirectory + destination, JSON.stringify(destinationJson));
