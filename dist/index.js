@@ -8455,8 +8455,7 @@ try {
   // Get the JSON webhook payload for the event that triggered the workflow
   /*const payload = JSON.stringify(github.context.payload, undefined, 2)
   console.log(`The event payload: ${payload}`);*/
-  let sourceJson = readFile(baseDirectory + '/source.json').then(data => data);
-  let destinationJson = readFile(baseDirectory + '/destination.json').then(data => data);
+  copyJsonContent(baseDirectory, '/source.json', '/destination.json');
   /*let destinationJson;
   await fs.readFile(baseDirectory + '/source.json', (err, data) => {
     sourceJson = JSON.parse(data);
@@ -8480,9 +8479,13 @@ try {
   core.setFailed(error.message);
 }
 
-async function readFile(filePath) {
-  let data = await fs.readFile(filePath);
-  console.log('async data -> '+data);
+async function copyJsonContent(baseDirectory, source, destination) {
+  let sourceData = await fs.readFile(baseDirectory + source);
+  let sourceJson = JSON.parse(sourceData);
+  let destinationData = await fs.readFile(baseDirectory + destination);
+  let destinationJson = JSON.parse(destinationData);
+
+  console.log('destionation after copy -> '+JSON.stringify(destinationJson));
   return data;
 }
 })();
