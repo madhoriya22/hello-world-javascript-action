@@ -20,7 +20,6 @@ try {
   });*/
 
   fs.readFile(baseDirectory + '/destination.json', (err, data) => {
-    destinationJson = JSON.parse(data);
     console.log('after write -> '+data);
   });
   //destinationJson.sourceValue = sourceJson.value;
