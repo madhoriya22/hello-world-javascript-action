@@ -8455,19 +8455,24 @@ try {
   // Get the JSON webhook payload for the event that triggered the workflow
   /*const payload = JSON.stringify(github.context.payload, undefined, 2)
   console.log(`The event payload: ${payload}`);*/
+  let sourceJson;
+  let destinationJson;
   fs.readFile(baseDirectory + '/source.json', (err, data) => {
-    let sourceJson = JSON.parse(data);
+    sourceJson = JSON.parse(data);
     console.log('sourceJson -> '+sourceJson);
     console.log('data -> '+data);
   });
 
   fs.readFile(baseDirectory + '/destination.json', (err, data) => {
-    let destinationJson = JSON.parse(data);
+    destinationJson = JSON.parse(data);
     console.log('destinationJson -> '+destinationJson);
     console.log('data -> '+data);
   });
-
-  
+  destinationJson.sourceValue = sourceJson.value;
+  fs.writeFile(baseDirectory + '/destination.json', JSON.stringify(destinationJson), err => {
+    if(err) throw err;
+    console.log('Successfully updated destination!!');
+  })
 } catch (error) {
   core.setFailed(error.message);
 }
