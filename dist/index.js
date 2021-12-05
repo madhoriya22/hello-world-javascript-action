@@ -8456,34 +8456,30 @@ try {
   /*const payload = JSON.stringify(github.context.payload, undefined, 2)
   console.log(`The event payload: ${payload}`);*/
   copyJsonContent(baseDirectory, '/source.json', '/destination.json');
-  /*let destinationJson;
-  await fs.readFile(baseDirectory + '/source.json', (err, data) => {
-    sourceJson = JSON.parse(data);
-    console.log('sourceJson -> '+sourceJson);
-    console.log('data -> '+data);
-  });*/
-  //destinationJson.sourceValue = sourceJson.value;
-  /*fs.writeFile(baseDirectory + '/destination.json', JSON.stringify(destinationJson), err => {
-    if(err) throw err;
-    console.log('Successfully updated destination!!');
-  })*/
+
 } catch (error) {
   core.setFailed(error.message);
 }
 
 async function copyJsonContent(baseDirectory, source, destination) {
+  //Read source file
   let sourceData = await fs.readFile(baseDirectory + source);
   let sourceJson = JSON.parse(sourceData);
+
+  //Read destination file
   let destinationData = await fs.readFile(baseDirectory + destination);
   let destinationJson = JSON.parse(destinationData);
+
+  //Copy to destination file
   destinationJson.sourceValue = sourceJson.value;
   console.log('destination after copy -> '+JSON.stringify(destinationJson));
 
   //write to destination file
   await fs.writeFile(baseDirectory + destination, JSON.stringify(destinationJson));
+
+  //Read the updated destination file
   destinationData = await fs.readFile(baseDirectory + destination);
   console.log('after write: '+destinationData);
-  return true;
 }
 })();
 
