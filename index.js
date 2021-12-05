@@ -11,8 +11,8 @@ try {
   // Get the JSON webhook payload for the event that triggered the workflow
   /*const payload = JSON.stringify(github.context.payload, undefined, 2)
   console.log(`The event payload: ${payload}`);*/
-  let sourceJson = readFile(baseDirectory + '/source.json');
-  let destinationJson = readFile(baseDirectory + '/destination.json');
+  let sourceJson = readFile(baseDirectory + '/source.json').then(data => data);
+  let destinationJson = readFile(baseDirectory + '/destination.json').then(data => data);
   /*let destinationJson;
   await fs.readFile(baseDirectory + '/source.json', (err, data) => {
     sourceJson = JSON.parse(data);
@@ -39,5 +39,5 @@ try {
 async function readFile(filePath) {
   let data = await fs.readFile(filePath);
   console.log('async data -> '+data);
-  return data.toString();
+  return data;
 }
