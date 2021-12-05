@@ -8481,7 +8481,7 @@ try {
 }
 
 async function readFile(filePath) {
-  let data = await fs.readFile(filePath);
+  let data = await fs.readFileSync(filePath);
   return data;
 }
 })();
