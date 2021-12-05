@@ -1,22 +1,23 @@
 on: [push]
 
 jobs:
-  hello_world_job:
+  copy_json_content:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: A Job to Copy Json contents
     steps:
       # To use this repository's private action,
       # you must check out the repository
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Hello world action step
+      
+      - name: Copy Json Content
         uses: ./ # Uses an action in the root directory
-        id: hello
+        id: jsonCopy
         with:
           base-directory: ${{github.workspace}}
       # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+      - name: Copy Json Content Result
+        run: echo "The time was ${{ steps.jsonCopy.outputs.result }}"
 
       - name: Commit changes
         uses: EndBug/add-and-commit@v7

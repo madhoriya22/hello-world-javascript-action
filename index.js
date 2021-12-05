@@ -5,12 +5,10 @@ const fs = require('fs').promises;
 try {
   // `who-to-greet` input defined in action metadata file
   const baseDirectory = core.getInput('base-directory');
-  console.log(`Hello ${baseDirectory}!`);
-  const time = (new Date()).toTimeString();
-  core.setOutput("time", time);
-  // Get the JSON webhook payload for the event that triggered the workflow
-  /*const payload = JSON.stringify(github.context.payload, undefined, 2)
-  console.log(`The event payload: ${payload}`);*/
+  console.log(`Base path:  ${baseDirectory}!`);
+  
+
+  //Copy json values
   copyJsonContent(baseDirectory, '/source.json', '/destination.json');
 
 } catch (error) {
@@ -36,4 +34,5 @@ async function copyJsonContent(baseDirectory, source, destination) {
   //Read the updated destination file
   destinationData = await fs.readFile(baseDirectory + destination);
   console.log('after write: '+destinationData);
+  core.setOutput("Successfully Copied Source Json To Destination Json", result);
 }
