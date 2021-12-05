@@ -17,13 +17,12 @@ try {
     sourceJson = JSON.parse(data);
     console.log('sourceJson -> '+sourceJson);
     console.log('data -> '+data);
-  });
+  });*/
 
   fs.readFile(baseDirectory + '/destination.json', (err, data) => {
     destinationJson = JSON.parse(data);
-    console.log('destinationJson -> '+destinationJson);
-    console.log('data -> '+data);
-  });*/
+    console.log('after write -> '+data);
+  });
   //destinationJson.sourceValue = sourceJson.value;
   /*fs.writeFile(baseDirectory + '/destination.json', JSON.stringify(destinationJson), err => {
     if(err) throw err;
