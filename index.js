@@ -38,7 +38,7 @@ async function copyJsonContent(baseDirectory, source, destination) {
   let sourceJson = JSON.parse(sourceData);
   let destinationData = await fs.readFile(baseDirectory + destination);
   let destinationJson = JSON.parse(destinationData);
-  destinationJson.sourceValue = sourceJson.source;
+  destinationJson.sourceValue = sourceJson.value;
 
   console.log('destionation after copy -> '+JSON.stringify(destinationJson));
   return destinationJson;
