@@ -8447,10 +8447,9 @@ const github = __nccwpck_require__(1468);
 const fs = (__nccwpck_require__(7147).promises);
 
 try {
-  // `who-to-greet` input defined in action metadata file
+  // `base-directory` input defined in action metadata file
   const baseDirectory = core.getInput('base-directory');
   console.log(`Base path:  ${baseDirectory}!`);
-  
 
   //Copy json values
   copyJsonContent(baseDirectory, '/source.json', '/destination.json');
