@@ -1,1 +1,17 @@
-{"name":"Sample destination Json","localValue":"This is local value","sourceValue":"Final Check!!!!!"}
+{
+  "items": 
+      {
+        "1.2.3": {
+            "learner_prompt": "",
+            "graded_assertion": "",
+            "helptext": "",
+            "err": {},
+            "Status": ""
+        }
+     },
+  "labName": "Payments Challenge",
+  "sequences": [
+    ["1.2.3", "1.2.4"],
+    "..."
+  ]
+}

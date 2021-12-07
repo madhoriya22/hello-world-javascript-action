@@ -8468,7 +8468,16 @@ async function copyJsonContent(baseDirectory, source, destination) {
   let destinationJson = JSON.parse(destinationData);
 
   //Copy to destination file
-  destinationJson.sourceValue = sourceJson.value;
+  //destinationJson.sourceValue = sourceJson.value;
+
+  sourceJson.results.suites[0].tests.forEach(element => {
+    if(destinationJson.items.hasOwnProperty(element.title)) {
+      destinationJson.items[element.title].learner_prompt = element.fullTitle;
+      destinationJson.items[element.title].graded_assertion = element.pass;
+      destinationJson.items[element.title].err = element.err;
+      destinationJson.items[element.title].Status = element.state;
+    }
+  })
   console.log('destination after copy -> '+JSON.stringify(destinationJson));
 
   //write to destination file
