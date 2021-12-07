@@ -8470,7 +8470,7 @@ async function copyJsonContent(baseDirectory, source, destination) {
   //Copy to destination file
   //destinationJson.sourceValue = sourceJson.value;
 
-  sourceJson.results.suites[0].tests.forEach(element => {
+  sourceJson.results[0].suites[0].tests.forEach(element => {
     if(destinationJson.items.hasOwnProperty(element.title)) {
       destinationJson.items[element.title].learner_prompt = element.fullTitle;
       destinationJson.items[element.title].graded_assertion = element.pass;
