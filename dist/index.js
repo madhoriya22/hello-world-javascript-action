@@ -8480,7 +8480,7 @@ async function copyJsonContent(baseDirectory, source, destination) {
   })
   console.log('destination after copy -> '+JSON.stringify(destinationJson));
 
-  let destinationFileName = baseDirectory + 'destination - ' + Date.now() + '.json';
+  let destinationFileName = baseDirectory + '/destination - ' + Date.now() + '.json';
   console.log('destination file name -> '+destinationFileName);
   //write to destination file
   await fs.writeFile(destinationFileName, JSON.stringify(destinationJson));
